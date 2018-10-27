@@ -28,7 +28,7 @@ or from camera
 
 
 ### Training
-- Features Extraction : using Histogram of Oriented Gradients (HOG) 
+- Features Extraction : using Histogram of Oriented Gradients (HOG) . Ref : https://www.learnopencv.com/histogram-of-oriented-gradients/
 - Classifier : using SVM for multi-class
 - Use the file "face_training.m" => save Classifier to the file "face_recognition_classifier.mat"
 
