@@ -49,10 +49,30 @@ or from camera
 with requisition:   
         + Each image has only 1 potential face 
         + 'face_creating_dataset_from_pictures.m': When you run it, you need to input 3 things ( directory of collected pictures of 1 person , id of this person , name of this person) .  The process will get these images, detect a region of face and scale into the size of 144-by-144 pixels and save to 'dataset/<id>_<name>/<numPic>.png'
-   + From camera (auto): When you run it, you only need 2 inputs ( the id and name of the person in front of camera to be labeled)
+   + From camera (auto): 'face_creating_dataset_from_camera.m' When you run it, you only need 2 inputs ( the id and name of the person in front of camera to be labeled)
    + Note that, all pictures with fixed size 144-by-144 must be saved in directory 'dataset' . The images will be saved in different sub-directory followed by the id and name of that person . Format: 'dataset/(id)_(personName)/*.png'
 - Training: You need to train the classifier . Run this file 'face_training.m'. It will train all the images of all the people in the directory 'dataset' and output the classifier to the file 'face_recognition_classifier.mat' . This output is purposed for later use 
 - Face Recognition and Face Tracking: run this file 'face_recognition_simple_from_camera.m'. It will take the classifier we saved earlier and classifies for this process. 
+    
+### Cách sử dụng (Vietnamese Version)
+! Note: mỗi lần tắt cửa sổ camera thì chương trình sẽ tự động dừng !
+- Test camera trước để xem camera hoạt động ổn không. Chạy file 'test_camera.m'
+- Detection face : phát hiện các khuôn mặt từ camera. Chạy file 'face_detection_video.m'
+- Thu thập dữ liệu: 
+    + Thu thập từ 1 nhiều hình down về từ internet:
+        + Down về và lưu vào 'dataset_notyetdetected' , và đặt tên thư mục là tên của người đó
+        + Label tự động và kiểm tra. Chạy file 'face_creating_dataset_from_pictures.m' cần bạn input 3 thông tin ( thư mục của những bức ảnh của 1 người mà bạn down về, id , tên của người đó) 
+        + File đó sẽ lấy toàn bộ hình trong thư mục mà bạn đã nhập. Sử dụng Face Detection để tìm ra vùng chứa khuôn mặt. Resize ảnh về 144x144 và chuyển sang màu xám. Lưu vào thư mục 'dataset/(id)_(personName)/*.png' 
+    + Thu thập từ camera scan 100 ảnh :
+        + Input 2 thông tin: id và tên của người được labeled
+        + Chạy file 'face_creating_dataset_from_camera.m' và đợi scan 100 hình 
+        + Lưu vào thư mục với format 'dataset/(id)_(personName)/*.png' 
+- Training:
+    + Chạy 'face_training.m' để train toàn bộ hình trong thư mục 'dataset'
+    + Sử dụng SVM
+    + Bộ Classifier sẽ được lưu trong 'face_recognition_classifier.mat' để tiện cho dùng sau này
+- Face Recognition and Face Tracking: 
+    + Chạy file 'face_recognition_simple_from_camera.m' và test thử
 
 ### Status : 
 - Still in developing ... 
